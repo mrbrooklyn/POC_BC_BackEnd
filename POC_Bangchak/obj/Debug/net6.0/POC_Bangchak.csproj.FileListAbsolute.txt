@@ -65,3 +65,4 @@ D:\WebForm\POC_Bangchak\POC_Bangchak\obj\Debug\net6.0\POC_Bangchak.genruntimecon
 D:\WebForm\POC_Bangchak\POC_Bangchak\obj\Debug\net6.0\ref\POC_Bangchak.dll
 D:\WebForm\POC_Bangchak\POC_Bangchak\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\WebForm\POC_Bangchak\POC_Bangchak\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\WebForm\POC_Bangchak\POC_Bangchak\bin\Debug\net6.0\BCrypt.Net-Next.dll

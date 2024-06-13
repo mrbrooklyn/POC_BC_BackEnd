@@ -33,25 +33,26 @@ namespace POC_Bangchak.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            if (user == null || user.PasswordHash != request.Password)
+            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
                 return BadRequest("Invalid email or password.");
             }
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["JWT:Secret"]); // _configuration["JWT:Secret"]
+            var key = Encoding.ASCII.GetBytes(_configuration["JWT:Secret"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Email),
-                    new Claim(ClaimTypes.Role, user.Role)
+            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Role, user.Role)
                 }),
-                Expires = DateTime.UtcNow.AddYears(1), // Token expiration time
+                Expires = DateTime.UtcNow.AddMinutes(30), // Token expiration time
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
-            var accessTokenExpireDate = DateTime.UtcNow.AddMinutes(30); // Token expiration time
+            var accessTokenExpireDate = DateTime.UtcNow.AddMinutes(30);
             var refreshToken = GenerateRefreshToken();
             var refreshTokenExpireDate = DateTime.UtcNow.AddMonths(6);
 
@@ -67,6 +68,7 @@ namespace POC_Bangchak.Controllers
 
             return Ok(Token);
         }
+
 
         private string GenerateRefreshToken()
         {
@@ -86,12 +88,12 @@ namespace POC_Bangchak.Controllers
                 return BadRequest("Username already exists.");
             }
 
-            // Here, you should hash the password before saving it to the database.
-            // For simplicity, let's assume the password provided in the request is plain text.
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
             var newUser = new User
             {
                 Email = request.Email,
-                PasswordHash = request.Password,
+                PasswordHash = hashedPassword,
                 Role = request.Role
             };
 

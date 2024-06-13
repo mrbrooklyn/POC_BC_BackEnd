@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ytH3PBmSRZMyDElDO26hSmHqDbL2hu4TflEsBce7OswaafAh/VTNC7yAhoyFoGvzn3DwLV4WI5VkPELrqqWyDw==",
+  "dgSpecHash": "zvIK2HS48j1m+0v7Shem6FvVSPRS8KH7bXne5CvJgNa4sLNUu9ozAnrbx5HDzsRfPCNyGg8fZtna9K1ORYkp1A==",
   "success": true,
   "projectFilePath": "D:\\WebForm\\POC_Bangchak\\POC_Bangchak\\POC_Bangchak.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\phattaramon\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\phattaramon\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phattaramon\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\phattaramon\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
